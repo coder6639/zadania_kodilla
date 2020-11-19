@@ -11,7 +11,7 @@ class BaseContact:
         self.email = email
 
         # Variables
-        self._label_length = len(name) + len(surname)
+        self._label_length = 0
 
     def __str__(self):
         return f"{self.name}, {self.surname}, {self.email}"
@@ -21,6 +21,7 @@ class BaseContact:
 
     @property
     def label_length(self):
+        self._label_length = len(self.name) + len(self.surname)
         return self._label_length
 
 
@@ -44,7 +45,7 @@ class BusinessContact(BaseContact):
 
 def create_contacts(item, quantity: int):
     if item == BaseContact:
-        for i in range(quantity):
+        for j in range(quantity):
             entry = BaseContact(name=fake.first_name(),
                                 surname=fake.last_name(),
                                 number=fake.phone_number(),
@@ -52,7 +53,7 @@ def create_contacts(item, quantity: int):
             print(entry)
             people.append(entry)
     elif item == BusinessContact:
-        for i in range(quantity):
+        for j in range(quantity):
             entry = BusinessContact(name=fake.first_name(),
                                     surname=fake.last_name(),
                                     number=fake.phone_number(),
@@ -61,7 +62,6 @@ def create_contacts(item, quantity: int):
                                     company=fake.company(),
                                     work_number=fake.phone_number())
             people.append(entry)
-
 
 
 people = []
@@ -74,4 +74,3 @@ for i in range(4):
     BaseContact.contact(self=people[i])
     BusinessContact.contact(self=people[i])
     print(people[i].label_length)
-
