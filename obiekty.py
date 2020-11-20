@@ -10,9 +10,6 @@ class BaseContact:
         self.number = number
         self.email = email
 
-        # Variables
-        self._label_length = 0
-
     def __str__(self):
         return f"{self.name}, {self.surname}, {self.email}"
 
@@ -21,8 +18,7 @@ class BaseContact:
 
     @property
     def label_length(self):
-        self._label_length = len(self.name) + len(self.surname)
-        return self._label_length
+        return len(self.name) + len(self.surname)
 
 
 class BusinessContact(BaseContact):
@@ -32,15 +28,8 @@ class BusinessContact(BaseContact):
         self.company = company
         self.work_number = work_number
 
-        # Variables
-        self._label_length = len(self.name) + len(self.surname)
-
     def contact(self):
         print(f"Wybieram numer {self.work_number} i dzwonię do {self.name} {self.surname}")
-
-    @property
-    def label_length(self):
-        return self._label_length
 
 
 def create_contacts(item, quantity: int):
@@ -65,12 +54,3 @@ def create_contacts(item, quantity: int):
 
 
 people = []
-
-create_contacts(BusinessContact, 4)
-
-for i in range(4):
-    print(people[i].number)
-    print(people[i].work_number)
-    BaseContact.contact(self=people[i])
-    BusinessContact.contact(self=people[i])
-    print(people[i].label_length)
