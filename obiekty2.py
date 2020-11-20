@@ -2,10 +2,6 @@ import datetime
 import random
 from csv import reader
 
-from faker import Faker
-
-fake = Faker()
-
 
 class Film:
     def __init__(self, title, year, genre):
@@ -88,7 +84,7 @@ def generate_views():
 
 
 def generate_times_10():
-    for i in range(10):
+    for j in range(10):
         generate_views()
 
 
@@ -149,11 +145,8 @@ print("Biblioteka filmów")
 
 load_data()
 
-for i in range(10):
+for m in range(10):
     generate_times_10()
 
 top_titles(Series)
 top_titles(Film)
-
-
-
