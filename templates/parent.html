@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+    <head>
+    {% block head %}
+        <link rel="stylesheet" href="{{url_for("static", filename="styleguide.css")}}">
+    {% endblock %}
+    </head>
+    <body>
+        <h1 class="top">Witam na mojej stronie internetowej!</h1>
+        <img src="{{url_for("static", filename="fmalula.jpg")}}"/>
+        <div id="content">{% block content %}{% endblock %}</div>
+    </body>
+</html>
