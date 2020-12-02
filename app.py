@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def exchange():
-
+    money_dict = get_data()
     if request.method == "GET":
         price = None
         return render_template("currency_exchange.html", money_list=money_dict.keys(), price=price)
@@ -41,6 +41,3 @@ def get_data():
         currency_dict[code] = {"bid": bid, "ask": ask}
 
     return currency_dict
-
-
-money_dict = get_data()
