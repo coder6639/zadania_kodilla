@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title class="title">Kantor wymiany walut</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<h1 class="top"><u>Witamy w naszym kantorze!</u></h1>
+    <h3 class="middle">Wybierz odpowiednią walutę oraz ilość, jaką chciałbyś kupić</h3>
+    <form method="post">
+    <label for="currency"></label>
+    <select name="currency" id="currency">
+        {% for money in money_list %}
+        <option>{{money}}</option>
+        {% endfor %}
+    </select>
+    <label for="amount"></label>
+    <input type="text" id="amount" name="amount">
+    <input type="submit" value="Przelicz!"><br><br>
+    </form>
+    {% if price %}
+    <p class="bottom">Całkowity koszt transakcji:</p>
+    <p class="price"><strong>{{price}} PLN</strong></p>
+    <img src="https://media.altpress.com/uploads/2018/06/make_money_gif.gif" alt="rich" width="358" height="232">
+
+    {% endif %}
+
+
+</body>
+</html>
